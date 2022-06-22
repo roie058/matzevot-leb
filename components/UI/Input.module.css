@@ -1,0 +1,41 @@
+.container {
+  margin: 1rem 20%;
+}
+
+.container label,
+.container input,
+.container textarea {
+  display: block;
+}
+
+.container label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.container input,
+.container textarea {
+  width: 100%;
+  font: inherit;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  padding: 0.15rem 0.25rem;
+}
+
+.container input:focus,
+.container textarea:focus {
+  outline: none;
+  background: #ebebeb;
+  border-color: #510077;
+}
+
+.container_invalid label,
+.container_invalid p {
+  color: red;
+}
+
+.container_invalid input,
+.container_invalid textarea {
+  border-color: red;
+  background: #ffd1d1;
+}

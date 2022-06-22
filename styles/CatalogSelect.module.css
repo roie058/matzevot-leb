@@ -1,0 +1,22 @@
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.cols {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.header {
+  font-size: x-large;
+  background-color: rgb(245, 245, 245);
+  border-radius: 5px;
+}

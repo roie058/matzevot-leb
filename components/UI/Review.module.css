@@ -1,0 +1,35 @@
+.review {
+  background-color: rgb(255, 255, 255);
+  width: 90%;
+  height: 100%;
+  margin: auto 10%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  border-radius: 5px;
+}
+
+.star {
+  width: 80%;
+}
+
+.quote {
+  cursor: grab;
+  color: black;
+}
+
+.quote::before {
+  content: open-quote;
+  font-size: inherit;
+}
+
+.quote::after {
+  content: close-quote;
+  font-size: inherit;
+}
+
+.name {
+  align-self: flex-start;
+  color: rgba(63, 63, 63, 0.5);
+}

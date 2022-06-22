@@ -1,0 +1,44 @@
+.whatsapp {
+  border-radius: 15%;
+
+  border: 2px solid transparent;
+  display: flex;
+  opacity: 0.7;
+  margin: auto;
+  margin-bottom: 1.2rem;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: space-around;
+  inherits: false;
+  background-color: rgb(34, 202, 98);
+}
+
+.whatsapp:hover {
+  background-color: white;
+  cursor: pointer;
+  border-color: rgb(34, 202, 98);
+  border: 2px solid rgb(34, 202, 98);
+}
+.whatsapp:hover .whatsapp_text {
+  color: rgb(34, 202, 98);
+  cursor: pointer;
+}
+
+.whatsapp img {
+  opacity: 0.5;
+  height: 30px;
+}
+
+.whatsapp_text::after {
+  background-image: url("/public/whatsapp-icon.png");
+  height: 30px;
+}
+
+.whatsapp_text {
+  color: aliceblue;
+  font-size: medium;
+}
+
+.whatsapp_link {
+  text-decoration: none;
+}

@@ -1,0 +1,16 @@
+.radio {
+  display: none;
+}
+
+.star_input {
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.star_review {
+  width: 70%;
+}
+
+.star_large {
+  align-self: center;
+}

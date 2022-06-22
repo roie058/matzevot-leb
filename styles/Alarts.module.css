@@ -1,0 +1,13 @@
+.alart {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: aliceblue;
+  margin: 3%;
+}
+
+.alart button {
+  flex-basis: 20%;
+}
+.alart h4 {
+  flex-basis: 80%;
+}

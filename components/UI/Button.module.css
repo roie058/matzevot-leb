@@ -1,0 +1,63 @@
+.button {
+  font: inherit !important ;
+  padding: 0.3rem 1rem !important;
+  border: 1px solid #3a949b !important;
+  border-radius: 4px !important;
+  background: #3a949b !important;
+  color: white !important;
+  cursor: pointer !important;
+
+  text-decoration: none !important;
+  display: inline-block !important;
+}
+
+.button:focus {
+  outline: none !important;
+}
+
+.button:hover,
+.button:active {
+  background: #bdc5d2 !important;
+  border-color: #bdc5d2 !important;
+}
+
+.button:disabled,
+.button:hover:disabled,
+.button:active:disabled {
+  background: #ccc !important;
+  color: #979797 !important;
+  border-color: #ccc !important;
+  cursor: not-allowed !important;
+}
+
+.delete {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid #af1b2f;
+  border-radius: 4px;
+  background: #af1b2f;
+  color: white;
+  cursor: pointer;
+
+  text-decoration: none;
+  display: inline-block;
+}
+
+.delete:focus {
+  outline: none;
+}
+
+.delete:hover,
+.delete:active {
+  background: #bdc5d2;
+  border-color: #bdc5d2;
+}
+
+.button:disabled,
+.delete:hover:disabled,
+.delete:active:disabled {
+  background: #ccc;
+  color: #979797;
+  border-color: #ccc;
+  cursor: not-allowed;
+}

@@ -1,0 +1,42 @@
+.container {
+  border-top: solid 2px #00adb5;
+  display: flex;
+  justify-content: center;
+  background-color: #222831;
+  align-content: space-between;
+}
+.container div {
+  margin: auto;
+  text-align: center;
+  color: #bcc5d3;
+}
+
+.container div h4 {
+  text-decoration: underline;
+}
+
+.container div button {
+  background-color: #32ccfe;
+  border-radius: 25%;
+  border-color: transparent;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  inherits: false;
+}
+.container div button img {
+  height: 3em;
+  object-fit: fill;
+  align-self: baseline;
+}
+.container div button a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.container div button:hover {
+  padding: 2% 5%;
+}

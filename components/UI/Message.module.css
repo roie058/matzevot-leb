@@ -1,0 +1,35 @@
+.message_container {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: azure;
+  margin: 10%;
+  border-radius: 3%;
+  align-content: space-between;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  background-color: azure;
+  align-content: center;
+  margin: 1%;
+}
+
+.message h2 {
+  margin: 1% 5%;
+}
+
+.message h3 {
+  align-self: flex-end;
+  margin: 10px 5%;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 5%;
+}
+
+.buttons button {
+  margin: 25px auto;
+}

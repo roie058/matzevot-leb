@@ -1,0 +1,38 @@
+.container {
+  margin: 1rem 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container label,
+.container select {
+  display: block;
+}
+
+.container label {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.container select {
+  width: 20%;
+  font: inherit;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  padding: 0.15rem 0.25rem;
+}
+
+.container select:focus {
+  outline: none;
+  background: #ebebeb;
+}
+
+.container_invalid label,
+.container_invalid p {
+  color: red;
+}
+
+.container_invalid select {
+  border-color: red;
+  background: #ffd1d1;
+}
