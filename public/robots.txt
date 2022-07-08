@@ -1,3 +1,14 @@
-# https://www.robotstxt.org/robotstxt.html
+# *
 User-agent: *
-Disallow:
+Disallow: /auth
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://matzevot-leb.vercel.app
+
+# Sitemaps
+Sitemap: https://matzevot-leb.vercel.app/sitemap.xml
+Sitemap: https://matzevot-leb.vercel.app/server-sitemap.xml
