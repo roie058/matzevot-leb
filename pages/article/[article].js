@@ -1,9 +1,13 @@
 import ArticlePage from "../../components/pages/ArticlePage";
 import { useRouter } from "next/router";
 
-import ErrorModal from "../../components/UI/ErrorModal";
-
 import { Fragment } from "react";
+
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() =>
+  import("../../components/UI/ErrorModal")
+);
 
 import { httpHandlr } from "../../lib/httpHandler";
 const { sendRequest, error, clearError } = httpHandlr();
@@ -16,7 +20,7 @@ const ArticleContentSelector = (props) => {
 
   return (
     <Fragment>
-      <ErrorModal error={props.error} onClear={clearError} />
+      <DynamicErrorModal error={props.error} onClear={clearError} />
 
       {loadedArticles &&
         loadedArticles.map((article) => {

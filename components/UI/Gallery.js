@@ -15,8 +15,6 @@ const Gallery = (props) => {
           src={image.src}
           key={image.src}
           onDragStart={handleDragStart}
-          width={props.width}
-          height={props.height}
           style={{ maxHeight: props.maxHeight, maxWidth: props.maxWidth }}
           alt={props.alt}
         />

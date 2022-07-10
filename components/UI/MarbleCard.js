@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Button from "./Button";
 import styles from "./MarbleCard.module.css";
 
@@ -6,12 +7,12 @@ const MarbleCard = (props) => {
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.card__header}>
-          <img
-            src={props.img}
+          <Image
+            src={"/" + props.img}
             alt="card__image"
             className={styles.card__image}
             width="600"
-            height="350"
+            height="600"
           />
         </div>
         <div className={styles.card__body}>

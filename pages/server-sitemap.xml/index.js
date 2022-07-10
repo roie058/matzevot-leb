@@ -1,6 +1,6 @@
 import { getServerSideSitemap } from "next-sitemap";
 
-export const GetServerSideProp = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_URL}/articles`
   );

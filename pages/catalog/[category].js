@@ -2,12 +2,17 @@ import Card from "../../components/UI/Card";
 import styles from "../../styles/CatalogSelect.module.css";
 import { useRouter } from "next/router";
 
-import ErrorModal from "../../components/UI/ErrorModal";
-
 import { Fragment, useContext } from "react";
 import { AuthContext } from "../../lib/context/auth-context";
 
 import { httpHandlr } from "../../lib/httpHandler";
+
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() =>
+  import("../../components/UI/ErrorModal")
+);
+
 const { sendRequest, error, clearError } = httpHandlr();
 
 const CatalogSelect = (props) => {
@@ -20,7 +25,7 @@ const CatalogSelect = (props) => {
 
   return (
     <Fragment>
-      <ErrorModal error={error} onClear={clearError} />
+      <DynamicErrorModal error={error} onClear={clearError} />
 
       {loadedCatalog && (
         <div>

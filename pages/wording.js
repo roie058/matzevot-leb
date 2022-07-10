@@ -7,7 +7,7 @@ const { sendRequest, error, clearError } = httpHandlr();
 const LattersPage = (props) => {
   return (
     <Fragment>
-      <h2>כיתוב על מצבה</h2>
+      <h1>כיתוב על מצבה</h1>
       <p>
         בחירת הכיתוב על המצבה הינה חלק עיקרי וחשוב בתהליך בניית המצבה יש לציין
         שהמלל הנכתב הוא שלכם ולכן אתם יכולים לכתוב מה שנראה לכם שמתאר את הנפטר

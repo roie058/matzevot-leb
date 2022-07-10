@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { useEffect, useState } from "react";
-
+import whatsappPic from "../../public/whatsapp-icon.png";
 import styles from "./WhatsappButton.module.css";
 
 const WhatsappButton = (props) => {
@@ -36,7 +37,12 @@ const WhatsappButton = (props) => {
         rel="noreferrer"
       >
         <button className={styles.whatsapp}>
-          <img src="/whatsapp-icon.png" alt="כפתור וואטסאפ" />
+          <Image
+            src={whatsappPic}
+            height={"30px"}
+            width={"30px"}
+            alt="כפתור וואטסאפ"
+          />
           <p className={styles.whatsapp_text}>{props.children}</p>
         </button>
       </a>

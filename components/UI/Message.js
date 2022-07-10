@@ -1,12 +1,16 @@
 import Button from "./Button";
 import styles from "./Message.module.css";
 import { Fragment, useState, useContext } from "react";
-import LoadingSpinner from "./LoadingSpinner";
-import ErrorModal from "./ErrorModal";
-import Modal from "./Modal";
+
 import { AuthContext } from "../../lib/context/auth-context";
 import { useHttp } from "../../lib/hooks/http-hook";
 import WhatsappButton from "./WhatsappButton";
+
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("./ErrorModal"));
+const DynamicModal = dynamic(() => import("./Modal"));
+const DynamicLoadingSpinner = dynamic(() => import("./LoadingSpinner"));
 
 const Message = (props) => {
   const { clearError, sendRequest, error, isLoading } = useHttp();
@@ -35,7 +39,7 @@ const Message = (props) => {
 
   return (
     <Fragment>
-      <Modal
+      <DynamicModal
         onCancel={cancelDelete}
         header="?אתה בטוח שברצונך למחוק את ההודעה לצמיתות"
         show={!!deleteState}
@@ -49,9 +53,9 @@ const Message = (props) => {
         }
       >
         <p>ההודעה תימחק ולא יהיה ניתן לשחזרה</p>
-      </Modal>
-      <ErrorModal error={error} onClear={clearError} />
-      {isLoading && <LoadingSpinner />}
+      </DynamicModal>
+      <DynamicErrorModal error={error} onClear={clearError} />
+      {isLoading && <DynamicLoadingSpinner />}
       {!isLoading && (
         <div className={styles.message_container}>
           <div className={styles.message}>

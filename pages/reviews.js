@@ -4,11 +4,16 @@ import Container from "../components/UI/Container";
 import styles from "../styles/Reviews.module.css";
 import ReviewStars from "../components/UI/ReviewStars";
 import { useHttp } from "../lib/hooks/http-hook";
-import LoadingSpinner from "../components/UI/LoadingSpinner";
-import ErrorModal from "../components/UI/ErrorModal";
-import Modal from "../components/UI/Modal";
 import { AuthContext } from "../lib/context/auth-context";
 import { httpHandlr } from "../lib/httpHandler";
+
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("../components/UI/ErrorModal"));
+const DynamicModal = dynamic(() => import("../components/UI/Modal"));
+const DynamicLoadingSpinner = dynamic(() =>
+  import("../components/UI/LoadingSpinner")
+);
 
 const Reviews = (props) => {
   const { clearError, error, isLoading, sendRequest } = useHttp();
@@ -64,8 +69,8 @@ const Reviews = (props) => {
 
   return (
     <Fragment>
-      <ErrorModal error={error} onClear={clearError} />
-      <Modal
+      <DynamicErrorModal error={error} onClear={clearError} />
+      <DynamicModal
         onCancel={cancelDelete}
         header="?אתה בטוח שברצונך למחוק את הביקורת לצמיתות"
         show={!!deleteState}
@@ -77,8 +82,8 @@ const Reviews = (props) => {
         }
       >
         <p>לא ניתן יהיה לשחזר את היקורת לאחר מכן</p>
-      </Modal>
-      {isLoading && <LoadingSpinner />}
+      </DynamicModal>
+      {isLoading && <DynamicLoadingSpinner />}
       {!isLoading &&
         loadedReviews &&
         loadedReviews.map((review) => {

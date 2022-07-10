@@ -2,11 +2,15 @@ import styles from "./Card.module.css";
 import { Fragment, useRef, useState, useEffect, useContext } from "react";
 import Button from "./Button";
 import { useHttp } from "../../lib/hooks/http-hook";
-import LoadingSpinner from "./LoadingSpinner";
-import ErrorModal from "./ErrorModal";
-import Modal from "./Modal";
+
 import { AuthContext } from "../../lib/context/auth-context";
-import WhatsappButton from "./WhatsappButton";
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("./ErrorModal"));
+const DynamicModal = dynamic(() => import("./Modal"));
+const DynamicLoadingSpinner = dynamic(() => import("./LoadingSpinner"));
+const DynamicWhatsappButton = dynamic(() => import("./WhatsappButton"));
+const DynamicButton = dynamic(() => import("./Button"));
 
 const Card = (props) => {
   const { clearError, error, isLoading, sendRequest } = useHttp();
@@ -69,8 +73,8 @@ const Card = (props) => {
 
   return (
     <Fragment>
-      <ErrorModal error={error} onClear={clearError} />
-      <Modal
+      <DynamicErrorModal error={error} onClear={clearError} />
+      <DynamicModal
         onCancel={cancelPhoto}
         header={props.id}
         show={!!imageState}
@@ -80,26 +84,30 @@ const Card = (props) => {
           </div>
         }
       >
-        <img
-          src={props.image}
-          alt={props.description}
-          style={{ maxHeight: "50vh", maxWidth: "100%", alignSelf: "center" }}
-        />
-      </Modal>
-      <Modal
+        <div style={{ display: "block" }}>
+          <img
+            src={props.image}
+            alt={props.description}
+            style={{ maxHeight: "50vh", maxWidth: "100%", alignSelf: "center" }}
+          />
+        </div>
+      </DynamicModal>
+      <DynamicModal
         onCancel={cancelDelete}
         header="?אתה בטוח שברצונך למחוק את הפריט לצמיתות"
         show={!!deleteState}
         footer={
           <div>
-            <Button onClick={() => deleteReview(deleteId)}>מחק</Button>
-            <Button onClick={cancelDelete}>ביטול</Button>
+            <DynamicButton onClick={() => deleteReview(deleteId)}>
+              מחק
+            </DynamicButton>
+            <DynamicButton onClick={cancelDelete}>ביטול</DynamicButton>
           </div>
         }
       >
         <p>לא ניתן יהיה לשחזר את הפריט לאחר מכן</p>
-      </Modal>
-      {isLoading && <LoadingSpinner />}
+      </DynamicModal>
+      {isLoading && <DynamicLoadingSpinner />}
       {!isLoading && (
         <div
           className={`${styles.col} ${isHovered ? styles.hover : ""}`}
@@ -136,30 +144,30 @@ const Card = (props) => {
                   {isCopied ? " פרטים הועתקו" : "העתק פרטים"}
                 </button>
 
-                <WhatsappButton
+                <DynamicWhatsappButton
                   id={props.id}
                   description={props.description}
                   image={image}
                   catalog
                 >
                   לקבלת הצעת מחיר בוואטסאפ
-                </WhatsappButton>
+                </DynamicWhatsappButton>
                 {props.isAdmin && (
                   <div>
-                    <Button
+                    <DynamicButton
                       to={`/catalog/edit/${props.edit}`}
                       replace
                       className={styles.edit}
                     >
                       שנה פרטים
-                    </Button>
-                    <Button
+                    </DynamicButton>
+                    <DynamicButton
                       className={styles.delete}
                       deleteButton
                       onClick={() => onDelete(props.edit)}
                     >
                       מחק מקטלוג
-                    </Button>
+                    </DynamicButton>
                   </div>
                 )}
               </div>

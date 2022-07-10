@@ -11,10 +11,13 @@ import {
   VALIDATOR_REQUIRE,
 } from "../components/util/validators";
 import { useRouter } from "next/router";
-import ErrorModal from "../components/UI/ErrorModal";
-import LoadingSpinner from "../components/UI/LoadingSpinner";
-
 import { useHttp } from "../lib/hooks/http-hook";
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("../components/UI/ErrorModal"));
+const DynamicLoadingSpinner = dynamic(() =>
+  import("../components/UI/LoadingSpinner")
+);
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -98,9 +101,9 @@ const Auth = () => {
 
   return (
     <Fragment>
-      <ErrorModal error={error} onClear={clearError} />
+      <DynamicErrorModal error={error} onClear={clearError} />
       <div className={styles.auth}>
-        {isLoading && <LoadingSpinner asOverlay />}
+        {isLoading && <DynamicLoadingSpinner asOverlay />}
 
         <form onSubmit={onSubmitHandler}>
           {!isLogin && (

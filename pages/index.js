@@ -3,10 +3,16 @@ import { Fragment, useState } from "react";
 import ArticleNewLayout from "../components/layout/ArticleNewLayout";
 import Button from "../components/UI/Button";
 import Container from "../components/UI/Container";
-import ErrorModal from "../components/UI/ErrorModal";
-import InfiniteSlider from "../components/UI/infiniteSlider";
-import ReviewDisplay from "../components/UI/ReviewDisplay";
 import WhatsappButton from "../components/UI/WhatsappButton";
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("../components/UI/ErrorModal"));
+const DynamicInfiniteSlider = dynamic(() =>
+  import("../components/UI/InfiniteSlider")
+);
+const DynamicReviewDisplay = dynamic(() =>
+  import("../components/UI/ReviewDisplay")
+);
 
 import { httpHandlr } from "../lib/httpHandler";
 const { sendRequest, error, clearError } = httpHandlr();
@@ -17,7 +23,7 @@ const HomePage = (props) => {
 
   return (
     <Fragment>
-      <ErrorModal error={error} onClear={clearError} />
+      <DynamicErrorModal error={error} onClear={clearError} />
 
       <Container>
         <h1>מצבות ליבוביץ</h1>
@@ -45,11 +51,11 @@ const HomePage = (props) => {
         </WhatsappButton>
       </div>
 
-      {loadedAlarts && <InfiniteSlider alarts={loadedAlarts} />}
-      {!loadedAlarts && <InfiniteSlider alarts={[]} />}
-      {loadedReviews && <ReviewDisplay reviews={loadedReviews} />}
+      {loadedAlarts && <DynamicInfiniteSlider alarts={loadedAlarts} />}
+      {!loadedAlarts && <DynamicInfiniteSlider alarts={[]} />}
+      {loadedReviews && <DynamicReviewDisplay reviews={loadedReviews} />}
       {!loadedReviews && (
-        <ReviewDisplay
+        <DynamicReviewDisplay
           reviews={[
             {
               id: "1",

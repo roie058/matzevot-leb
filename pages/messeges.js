@@ -1,8 +1,11 @@
 import { Fragment } from "react";
 
-import ErrorModal from "../components/UI/ErrorModal";
 import { httpHandlr } from "../lib/httpHandler";
 import Message from "../components/UI/Message";
+
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("../components/UI/ErrorModal"));
 
 const { sendRequest, error, clearError } = httpHandlr();
 const ShowMesseges = (props) => {
@@ -10,7 +13,7 @@ const ShowMesseges = (props) => {
 
   return (
     <Fragment>
-      <ErrorModal error={props.error} onClear={clearError} />
+      <DynamicErrorModal error={props.error} onClear={clearError} />
 
       {loadedMessages &&
         loadedMessages.map((message) => (

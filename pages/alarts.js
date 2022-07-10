@@ -3,11 +3,15 @@ import Button from "../components/UI/Button";
 import NewAlart from "../components/pages/NewAlart";
 import styles from "../styles/Alarts.module.css";
 import { useHttp } from "../lib/hooks/http-hook";
-import LoadingSpinner from "../components/UI/LoadingSpinner";
-import ErrorModal from "../components/UI/ErrorModal";
-import Modal from "../components/UI/Modal";
 import { AuthContext } from "../lib/context/auth-context";
 import { httpHandlr } from "../lib/httpHandler";
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("../components/UI/ErrorModal"));
+const DynamicModal = dynamic(() => import("../components/UI/Modal"));
+const DynamicLoadingSpinner = dynamic(() =>
+  import("../components/UI/LoadingSpinner")
+);
 
 const Alarts = (props) => {
   const { clearError, error, isLoading, sendRequest } = useHttp();
@@ -46,8 +50,8 @@ const Alarts = (props) => {
 
   return (
     <Fragment>
-      <ErrorModal error={error} onClear={clearError} />
-      <Modal
+      <DynamicErrorModal error={error} onClear={clearError} />
+      <DynamicModal
         onCancel={cancelDelete}
         header="?אתה בטוח שברצונך למחוק את ההתראה לצמיתות"
         show={!!deleteState}
@@ -59,8 +63,8 @@ const Alarts = (props) => {
         }
       >
         <p>לא ניתן יהיה לשחזר את ההתראה לאחר מכן</p>
-      </Modal>
-      {isLoading && <LoadingSpinner />}
+      </DynamicModal>
+      {isLoading && <DynamicLoadingSpinner />}
       {!isLoading &&
         loadedAlarts &&
         loadedAlarts.map((alart) => {

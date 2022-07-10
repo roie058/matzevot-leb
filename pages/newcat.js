@@ -3,12 +3,16 @@ import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
 import { VALIDATOR_REQUIRE } from "../components/util/validators";
 import Select from "../components/UI/Select";
-import LoadingSpinner from "../components/UI/LoadingSpinner";
-import ErrorModal from "../components/UI/ErrorModal";
 import { useHttp } from "../lib/hooks/http-hook";
 import { AuthContext } from "../lib/context/auth-context";
 import { useContext, Fragment } from "react";
 import ImageUpload from "../components/UI/ImageUpload";
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("../components/UI/ErrorModal"));
+const DynamicLoadingSpinner = dynamic(() =>
+  import("../components/UI/LoadingSpinner")
+);
 
 const NewCatalog = (props) => {
   const [formState, inputHandler] = useForm(
@@ -67,8 +71,8 @@ const NewCatalog = (props) => {
   };
   return (
     <Fragment>
-      <ErrorModal error={error} onClear={clearError} />
-      {isLoading && <LoadingSpinner />}
+      <DynamicErrorModal error={error} onClear={clearError} />
+      {isLoading && <DynamicLoadingSpinner />}
       {!isLoading && (
         <form onSubmit={onSubmitHandler}>
           <Select

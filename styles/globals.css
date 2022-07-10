@@ -9,7 +9,7 @@ body {
   font-family: Arimo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(/marble-background.jpg);
+  background-image: url(/marble-background.webp);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

@@ -9,11 +9,14 @@ import {
   VALIDATOR_REQUIRE,
 } from "../components/util/validators.js";
 import Button from "../components/UI/Button";
-
-import ErrorModal from "../components/UI/ErrorModal";
-import LoadingSpinner from "../components/UI/LoadingSpinner";
 import { useHttp } from "../lib/hooks/http-hook";
 import Container from "../components/UI/Container";
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("../components/UI/ErrorModal"));
+const DynamicLoadingSpinner = dynamic(() =>
+  import("../components/UI/LoadingSpinner")
+);
 
 const Contact = () => {
   const { error, isLoading, clearError, sendRequest } = useHttp();
@@ -117,7 +120,7 @@ const Contact = () => {
 
   return (
     <Fragment>
-      <ErrorModal error={error} onClear={clearError} />
+      <DynamicErrorModal error={error} onClear={clearError} />
       <Container>
         <h2>צור קשר איתנו</h2>
         <h3>:מספרי טלפון</h3>
@@ -129,7 +132,7 @@ const Contact = () => {
         <p> לקבלת הצעת מחיר על מצבה אנא השאר פרטים ויחזרו אלייך בהקדם</p>
 
         {reqSent && <p>הבקשה נשלחה בהצלחה נציג יחזור אלייך בהקדם</p>}
-        {isLoading && <LoadingSpinner />}
+        {isLoading && <DynamicLoadingSpinner />}
         {!isLoading && !reqSent && (
           <form onSubmit={onSubmitHandler} id="form" className={styles.form}>
             <Select

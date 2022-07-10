@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./Slider.module.css";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+import Image from "next/image";
 const Slider = (props) => {
   const [slideNum, setSlideNum] = useState(0);
   const length = props.images.length;
@@ -45,11 +46,13 @@ const Slider = (props) => {
             key={index}
           >
             {index === slideNum && (
-              <img
+              <Image
                 key={image.id}
                 className={styles.image}
                 src={image.src}
                 alt={image.alt}
+                width={image.width}
+                height={image.height}
               />
             )}
           </div>

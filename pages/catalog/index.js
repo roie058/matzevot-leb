@@ -12,7 +12,7 @@ const Catalog = () => {
         />
         <CatalogCard
           link="turki"
-          bg="turki.jpg"
+          bg="turki.webp"
           category="קטלוג"
           heading="מצבות משיש טורקי"
         />
@@ -39,7 +39,7 @@ const Catalog = () => {
 
         <CatalogCard
           link="rice-granite"
-          bg="rice-granite.jpg"
+          bg="rice-granite.webp"
           category="קטלוג"
           heading="מצבות מגרניט אורז"
         />
@@ -53,7 +53,7 @@ const Catalog = () => {
 
         <CatalogCard
           link="red-granite"
-          bg="red-granite.jpg"
+          bg="red-granite.webp"
           category="קטלוג"
           heading="מצבות מגרניט אדום"
         />
@@ -67,7 +67,7 @@ const Catalog = () => {
 
         <CatalogCard
           link="slaybe"
-          bg="slaybe.jpg"
+          bg="slaybe.webp"
           category="קטלוג"
           heading="מצבות מאבן סלייב"
         />

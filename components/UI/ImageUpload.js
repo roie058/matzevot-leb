@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useRef, useState, useEffect, Fragment } from "react";
 
 import Button from "./Button";
@@ -89,9 +90,11 @@ const ImageUpload = (props) => {
           >
             <div className={styles.image_upload__preview}>
               {(previewUrl || props.image) && (
-                <img
+                <Image
                   src={previewUrl ? previewUrl : props.image}
                   alt="Preview"
+                  width={500}
+                  height={500}
                 />
               )}
 
@@ -123,9 +126,11 @@ const ImageUpload = (props) => {
           >
             <div className={styles.image_upload__preview}>
               {(previewUrl || props.image) && (
-                <img
+                <Image
                   src={previewUrl ? previewUrl : props.image}
                   alt="Preview"
+                  width={500}
+                  height={500}
                 />
               )}
               {!previewUrl && !props.image && <p>בחר תמונה בבקשה</p>}

@@ -2,13 +2,17 @@ import { Fragment, useState, useEffect, useContext } from "react";
 import Button from "../components/UI/Button";
 import styles from "../styles/AllArticles.module.css";
 import { useHttp } from "../lib/hooks/http-hook";
-import LoadingSpinner from "../components/UI/LoadingSpinner";
-import ErrorModal from "../components/UI/ErrorModal";
-import Modal from "../components/UI/Modal";
 import NewArticle from "../components/pages/NewArticle";
 import Container from "../components/UI/Container";
 import { AuthContext } from "../lib/context/auth-context";
 import { httpHandlr } from "../lib/httpHandler";
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("../components/UI/ErrorModal"));
+const DynamicModal = dynamic(() => import("../components/UI/Modal"));
+const DynamicLoadingSpinner = dynamic(() =>
+  import("../components/UI/LoadingSpinner")
+);
 
 const AllArticles = (props) => {
   const { clearError, error, isLoading, sendRequest } = useHttp();
@@ -46,8 +50,8 @@ const AllArticles = (props) => {
 
   return (
     <Fragment>
-      <ErrorModal error={error} onClear={clearError} />
-      <Modal
+      <DynamicErrorModal error={error} onClear={clearError} />
+      <DynamicModal
         onCancel={cancelDelete}
         header="?אתה בטוח שברצונך למחוק את המאמר לצמיתות"
         show={!!deleteState}
@@ -59,8 +63,8 @@ const AllArticles = (props) => {
         }
       >
         <p>לא ניתן יהיה לשחזר את המאמר לאחר מכן</p>
-      </Modal>
-      {isLoading && <LoadingSpinner />}
+      </DynamicModal>
+      {isLoading && <DynamicLoadingSpinner />}
       {!isLoading &&
         loadedArticles &&
         loadedArticles.map((article) => {

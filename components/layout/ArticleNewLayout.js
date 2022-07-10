@@ -58,7 +58,7 @@ const ArticleNewLayout = (props) => {
             />
             <ArticleItem
               className={styles.other_articles}
-              image="/turkish-marble.jpg"
+              image="/turkish-marble.webp"
               header="סוג השיש"
               link="/marbles"
               button="לצפייה"

@@ -1,14 +1,16 @@
 import { useForm } from "../../lib/hooks/form-hook";
 import { useHttp } from "../../lib/hooks/http-hook";
 
-import LoadingSpinner from "../UI/LoadingSpinner";
-import ErrorModal from "../UI/ErrorModal";
 import Input from "../UI/Input";
 import Button from "../UI/Button";
 import { VALIDATOR_REQUIRE } from "../util/validators";
-import Modal from "../UI/Modal";
 import { useState, Fragment } from "react";
 import ReviewStars from "../UI/ReviewStars";
+import dynamic from "next/dynamic";
+
+const DynamicErrorModal = dynamic(() => import("../UI/ErrorModal"));
+const DynamicModal = dynamic(() => import("../UI/Modal"));
+const DynamicLoadingSpinner = dynamic(() => import("../UI/LoadingSpinner"));
 
 const NewReview = (props) => {
   const [formState, inputHandler] = useForm(
@@ -73,10 +75,10 @@ const NewReview = (props) => {
   return (
     <Fragment>
       <Button onClick={openModal}>כתיבת ביקורת</Button>
-      <ErrorModal error={error} onClear={clearError} />
-      {isLoading && <LoadingSpinner />}
+      <DynamicErrorModal error={error} onClear={clearError} />
+      {isLoading && <DynamicLoadingSpinner />}
       {!isLoading && (
-        <Modal
+        <DynamicModal
           onCancel={openModal}
           header="השאר ביקורת"
           show={!!isOpen}
@@ -123,7 +125,7 @@ const NewReview = (props) => {
               שלח
             </Button>
           </form>
-        </Modal>
+        </DynamicModal>
       )}
     </Fragment>
   );
