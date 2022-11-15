@@ -14,7 +14,7 @@ const DynamicLoadingSpinner = dynamic(() =>
   import("../components/UI/LoadingSpinner")
 );
 
-const NewCatalog = (props) => {
+const NewCatalog = () => {
   const [formState, inputHandler] = useForm(
     {
       marble: {
