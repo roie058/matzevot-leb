@@ -24,8 +24,7 @@ const HomePage = (props) => {
   return (
     <Fragment>
       <DynamicErrorModal error={error} onClear={clearError} />
-
-      <Container>
+      <div className="page-background">
         <h1>מצבות ליבוביץ</h1>
         <p>
           מצבות ואנדרטאות בכל רחבי הארץ
@@ -34,39 +33,39 @@ const HomePage = (props) => {
           <br />
           עסק משפחתי שמתמחה בתחום כבר למעלה מ40 שנה
         </p>
-      </Container>
 
-      <ArticleNewLayout
-        clearError={clearError}
-        error={props.error}
-        loadedArticles={props.loadedArticles}
-      />
-
-      <div>
-        <h2>לקבלת הצעת מחיר על מצבה</h2>
-
-        <Button href="/contact">השאר הודעה באתר</Button>
-        <WhatsappButton phone="0546660848" text="">
-          או בוואטסאפ
-        </WhatsappButton>
-      </div>
-
-      {loadedAlarts && <DynamicInfiniteSlider alarts={loadedAlarts} />}
-      {!loadedAlarts && <DynamicInfiniteSlider alarts={[]} />}
-      {loadedReviews && <DynamicReviewDisplay reviews={loadedReviews} />}
-      {!loadedReviews && (
-        <DynamicReviewDisplay
-          reviews={[
-            {
-              id: "1",
-              grade: "5",
-              description: ".אין ביקורות",
-              name: "מצבות",
-              isVisible: true,
-            },
-          ]}
+        <ArticleNewLayout
+          clearError={clearError}
+          error={props.error}
+          loadedArticles={props.loadedArticles}
         />
-      )}
+
+        <div>
+          <h2>לקבלת הצעת מחיר על מצבה</h2>
+
+          <Button href="/contact">השאר הודעה באתר</Button>
+          <WhatsappButton phone="0546660848" text="">
+            או בוואטסאפ
+          </WhatsappButton>
+        </div>
+
+        {loadedAlarts && <DynamicInfiniteSlider alarts={loadedAlarts} />}
+        {!loadedAlarts && <DynamicInfiniteSlider alarts={[]} />}
+        {loadedReviews && <DynamicReviewDisplay reviews={loadedReviews} />}
+        {!loadedReviews && (
+          <DynamicReviewDisplay
+            reviews={[
+              {
+                id: "1",
+                grade: "5",
+                description: ".אין ביקורות",
+                name: "מצבות",
+                isVisible: true,
+              },
+            ]}
+          />
+        )}
+      </div>
     </Fragment>
   );
 };

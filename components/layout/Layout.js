@@ -9,7 +9,9 @@ const Layout = (props) => {
   return (
     <div className={classes.rooter}>
       <Navbar />
-      <main className={classes.main}>{props.children}</main>
+      <main className={classes.main}>
+        <div className={classes.background}>{props.children}</div>
+      </main>
       <DynamicFooter />
     </div>
   );

@@ -1,8 +1,8 @@
 .main {
-  margin: 5% auto;
+  margin: 0% auto;
   align-items: center;
   width: auto;
-  max-width: 75%;
+  max-width: 90%;
   min-height: 65vh;
   align-content: center;
   text-align: center;
@@ -15,4 +15,13 @@
 }
 .rooter::-webkit-scrollbar {
   display: none;
+}
+
+
+.background{
+  background-color: #ececec;
+  height: 100%;
+  width: 100%;
+  padding: 10% 5%;
+ 
 }
