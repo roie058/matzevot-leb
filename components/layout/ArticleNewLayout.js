@@ -102,7 +102,7 @@ const ArticleNewLayout = (props) => {
               {loadedArticles.map((article) => {
                 return (
                   <ArticleItem
-                    className={styles.other_articles}
+                    className={`${styles.other_articles} ${styles.animate}`}
                     image={`${article.headImage.replace(/\\/g, "/")}`}
                     header={article.header}
                     link={article.address}
@@ -120,7 +120,7 @@ const ArticleNewLayout = (props) => {
                   return (
                     <ArticleItem
                       id={styles[article.id]}
-                      className={styles.other_articles}
+                      className={`${styles.other_articles} ${styles.animate}`}
                       image={`${article.headImage.replace(/\\/g, "/")}`}
                       header={article.header}
                       link={article.address}
