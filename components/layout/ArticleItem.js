@@ -5,7 +5,7 @@ import Button from "../UI/Button";
 import styles from "./ArticleNewLayout.module.css";
 const ArticleItem = (props) => {
   return (
-    <article className={props.className}>
+    <article className={props.className} id={props.id}>
       <Link type="button" className={styles.link} href={props.link}>
         <a>
           <div
